@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Summary Generator</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Professional Summary Generator</h1>
+
+  <label for="complaint">Complaint:</label>
+  <textarea id="complaint" placeholder="Enter the issue or concern..."></textarea>
+
+  <label for="cause">Cause:</label>
+  <textarea id="cause" placeholder="What caused the issue?"></textarea>
+
+  <label for="correction">Correction (Proposed Solution):</label>
+  <textarea id="correction" placeholder="How will it be fixed?"></textarea>
+
+  <div class="button-group">
+    <button onclick="generate()">Generate Summary</button>
+    <button class="reset-btn" onclick="resetFields()">Reset</button>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    async function generate() {
+      const complaint = document.getElementById("complaint").value.trim();
+      const cause = document.getElementById("cause").value.trim();
+      const correction = document.getElementById("correction").value.trim();
+      const output = document.getElementById("output");
+
+      if (!complaint || !cause || !correction) {
+        output.innerHTML = "<p style='color: red;'>Please fill in all fields.</p>";
+        return;
+      }
+
+      output.innerHTML = "Generating summary...";
+
+      const res = await fetch("/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ complaint, cause, correction }),
+      });
+
+      const data = await res.json();
+      output.innerHTML = "";
+
+      const div = document.createElement("div");
+      div.className = "summary-box";
+      const formatted = data.summary
+        .replace(/^(Summary|More about the complaint|What might have caused it|Planned correction|Why it is important to fix it)/gmi, "<h3>$1</h3>")
+        .replace(/\n{2,}/g, "<br><br>");
+
+      div.innerHTML = `
+        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+        ${formatted}
+        <div class="copied-msg" style="display:none;">Copied to clipboard!</div>
+      `;
+
+      output.appendChild(div);
+    }
+
+    function copyToClipboard(button) {
+      const textToCopy = button.parentElement.innerText.replace("Copy", "").trim();
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const msg = button.nextElementSibling;
+        msg.style.display = "block";
+        setTimeout(() => (msg.style.display = "none"), 1500);
+      });
+    }
+
+    function resetFields() {
+      document.getElementById("complaint").value = "";
+      document.getElementById("cause").value = "";
+      document.getElementById("correction").value = "";
+      document.getElementById("output").innerHTML = "";
+    }
+  </script>
+
+</body>
+</html>
