@@ -47,25 +47,25 @@ Your task is to generate the following in 100 words each:
 Write clearly and professionally.
 `;
 
-  try {
-    const response = await axios.post(
-      `${GEMINI_URL}?key=${API_KEY}`,
-      {
-        contents: [
-          {
-            parts: [{ text: prompt }],
+    try {
+      const response = await axios.post(
+        `${GEMINI_URL}?key=${API_KEY}`,
+        {
+          contents: [
+            {
+              parts: [{ text: prompt }],
+            },
+          ],
+          generationConfig: {
+            temperature: 0.7,
           },
-        ],
-        generationConfig: {
-          temperature: 0.7,
         },
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
     const result =
       response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "No summary generated.";

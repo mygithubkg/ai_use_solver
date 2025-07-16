@@ -13,20 +13,34 @@
 </head>
 <body>
 
-  <h1>Professional Summary Generator</h1>
 
-  <label for="complaint">Complaint:</label>
-  <textarea id="complaint" placeholder="Enter the issue or concern..."></textarea>
+  <div class="brand-header">
+    <img src="https://img.icons8.com/ios-filled/50/007bff/summary-list.png" alt="Logo" class="brand-logo"/>
+    <div>
+      <h1>AI Model Summary Generator</h1>
+      <p class="subtitle">Generate professional, concise summaries for complaints, causes, and corrections.</p>
+    </div>
+  </div>
 
-  <label for="cause">Cause:</label>
-  <textarea id="cause" placeholder="What caused the issue?"></textarea>
-
-  <label for="correction">Correction (Proposed Solution):</label>
-  <textarea id="correction" placeholder="How will it be fixed?"></textarea>
-
-  <div class="button-group">
-    <button onclick="generate()">Generate Summary</button>
-    <button class="reset-btn" onclick="resetFields()">Reset</button>
+  <div class="form-card">
+    <form onsubmit="event.preventDefault(); generate();" autocomplete="off">
+      <div class="form-group">
+        <label for="complaint">Complaint</label>
+        <textarea id="complaint" placeholder="Describe the issue or concern..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="cause">Cause</label>
+        <textarea id="cause" placeholder="What caused the issue?" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="correction">Correction (Proposed Solution)</label>
+        <textarea id="correction" placeholder="How will it be fixed?" required></textarea>
+      </div>
+      <div class="button-group">
+        <button type="submit">Generate Summary</button>
+        <button type="button" class="reset-btn" onclick="resetFields()">Reset</button>
+      </div>
+    </form>
   </div>
 
   <div id="output"></div>
