@@ -4,7 +4,6 @@
 
 **Transform complaints, causes, and corrections into professional summaries with AI-powered intelligence**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-16-green.svg)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-4.x-blue.svg)](https://expressjs.com/)
 [![EmailJS](https://img.shields.io/badge/EmailJS-3orange.svg)](https://www.emailjs.com/)
@@ -29,8 +28,6 @@
 - [🎨 Design Features](#-design-features)
 - [🔒 Security & Privacy](#-security--privacy)
 - [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-
 ---
 
 ## ✨ Overview
@@ -177,30 +174,6 @@ And generates a professional summary with five detailed sections:1 Executive Sum
 
 ---
 
-## 🔧 Configuration
-
-### Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GEMINI_API_KEY` | Your Gemini AI API key | ✅ Yes |
-| `PORT` | Server port (default: 30) | ❌ No |
-| `NODE_ENV` | Environment (development/production) | ❌ No |
-
-### EmailJS Configuration
-
-For contact form functionality, configure EmailJS:
-1. **Update EmailJS credentials** in `public/index.html`:
-   ```html
-   <script id="env
-     data-emailjs-public-key="YOUR_PUBLIC_KEY
-     data-emailjs-service-id="YOUR_SERVICE_ID
-     data-emailjs-template-id="YOUR_TEMPLATE_ID></script>
-   ```
-
-2. **Follow the complete setup guide**: [EmailJS Setup Guide](./EMAILJS_SETUP.md)
-
----
 
 ## 📊 Benefits
 
@@ -306,43 +279,7 @@ Brief description of changes
 -cumentation update
 - [ ] Performance improvement
 
-## Testing
--  ] Tested locally
--  ] All tests pass
-- [ ] No breaking changes
 
-## Screenshots (if applicable)
-Add screenshots to help explain your changes
-```
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### License Summary
-- ✅ **Commercial use** allowed
-- ✅ **Modification** allowed
-- ✅ **Distribution** allowed
-- ✅ **Private use** allowed
-- ❌ **Liability** limited
-- ❌ **Warranty** limited
-
----
-
-## 📞 Support & Contact
-
-### Getting Help
-- **📧 Email**: support@aisummarypro.com
-- **⏰ Response Time**: Within 24 hours
-- **📚 Documentation**: Comprehensive guides and tutorials
-- **❓ FAQ Section**: Common questions and answers
-
-### Community
-- **💬 Discussions**: [GitHub Discussions](../../discussions)
-- **🐛 Issues**: [GitHub Issues](../../issues)
-- **📖 Wiki**: [Project Wiki](../../wiki)
 
 ### Feedback & Suggestions
 We welcome feedback to improve the application. Please contact us with:
